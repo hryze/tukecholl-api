@@ -2,20 +2,20 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "github.com/paypay3/tukecholl-api/proto/user";
+option go_package = "github.com/paypay3/tukecholl-api/proto/userproto";
 
 service UserService {
-  rpc SignUp(SignUpUserRequest) returns (SignUpUserResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
 }
 
-message SignUpUserRequest {
+message CreateUserRequest {
   string id       = 1;
   string name     = 2;
   string email    = 3;
   string password = 4;
 }
 
-message SignUpUserResponse {
+message CreateUserResponse {
   string id    = 1;
   string name  = 2;
   string email = 3;
