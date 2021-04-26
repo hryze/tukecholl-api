@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package account;
+
+option go_package = "github.com/paypay3/tukecholl-api/proto/accountproto";
+
+service AccountService {
+  rpc CreateStandardBudgets(CreateStandardBudgetsRequest) returns (CreateStandardBudgetsResponse);
+}
+
+message CreateStandardBudgetsRequest {
+  string user_id = 1;
+}
+
+message CreateStandardBudgetsResponse {}

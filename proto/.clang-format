@@ -1,5 +1,6 @@
 ---
 Language: Proto
 BasedOnStyle: Google
+ColumnLimit: 120
 AlignConsecutiveAssignments: true
 AlignConsecutiveDeclarations: true
