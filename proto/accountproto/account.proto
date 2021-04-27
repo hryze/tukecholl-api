@@ -4,7 +4,7 @@ package account;
 
 option go_package = "github.com/paypay3/tukecholl-api/proto/accountproto";
 
-service AccountService {
+service BudgetService {
   rpc CreateStandardBudgets(CreateStandardBudgetsRequest) returns (CreateStandardBudgetsResponse);
 }
 

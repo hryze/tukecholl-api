@@ -14,86 +14,86 @@ import (
 // Requires gRPC-Go v1.32.0 or later.
 const _ = grpc.SupportPackageIsVersion7
 
-// AccountServiceClient is the client API for AccountService service.
+// BudgetServiceClient is the client API for BudgetService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type AccountServiceClient interface {
+type BudgetServiceClient interface {
 	CreateStandardBudgets(ctx context.Context, in *CreateStandardBudgetsRequest, opts ...grpc.CallOption) (*CreateStandardBudgetsResponse, error)
 }
 
-type accountServiceClient struct {
+type budgetServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewAccountServiceClient(cc grpc.ClientConnInterface) AccountServiceClient {
-	return &accountServiceClient{cc}
+func NewBudgetServiceClient(cc grpc.ClientConnInterface) BudgetServiceClient {
+	return &budgetServiceClient{cc}
 }
 
-func (c *accountServiceClient) CreateStandardBudgets(ctx context.Context, in *CreateStandardBudgetsRequest, opts ...grpc.CallOption) (*CreateStandardBudgetsResponse, error) {
+func (c *budgetServiceClient) CreateStandardBudgets(ctx context.Context, in *CreateStandardBudgetsRequest, opts ...grpc.CallOption) (*CreateStandardBudgetsResponse, error) {
 	out := new(CreateStandardBudgetsResponse)
-	err := c.cc.Invoke(ctx, "/account.AccountService/CreateStandardBudgets", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/account.BudgetService/CreateStandardBudgets", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// AccountServiceServer is the server API for AccountService service.
-// All implementations must embed UnimplementedAccountServiceServer
+// BudgetServiceServer is the server API for BudgetService service.
+// All implementations must embed UnimplementedBudgetServiceServer
 // for forward compatibility
-type AccountServiceServer interface {
+type BudgetServiceServer interface {
 	CreateStandardBudgets(context.Context, *CreateStandardBudgetsRequest) (*CreateStandardBudgetsResponse, error)
-	mustEmbedUnimplementedAccountServiceServer()
+	mustEmbedUnimplementedBudgetServiceServer()
 }
 
-// UnimplementedAccountServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedAccountServiceServer struct {
+// UnimplementedBudgetServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedBudgetServiceServer struct {
 }
 
-func (UnimplementedAccountServiceServer) CreateStandardBudgets(context.Context, *CreateStandardBudgetsRequest) (*CreateStandardBudgetsResponse, error) {
+func (UnimplementedBudgetServiceServer) CreateStandardBudgets(context.Context, *CreateStandardBudgetsRequest) (*CreateStandardBudgetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateStandardBudgets not implemented")
 }
-func (UnimplementedAccountServiceServer) mustEmbedUnimplementedAccountServiceServer() {}
+func (UnimplementedBudgetServiceServer) mustEmbedUnimplementedBudgetServiceServer() {}
 
-// UnsafeAccountServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to AccountServiceServer will
+// UnsafeBudgetServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BudgetServiceServer will
 // result in compilation errors.
-type UnsafeAccountServiceServer interface {
-	mustEmbedUnimplementedAccountServiceServer()
+type UnsafeBudgetServiceServer interface {
+	mustEmbedUnimplementedBudgetServiceServer()
 }
 
-func RegisterAccountServiceServer(s grpc.ServiceRegistrar, srv AccountServiceServer) {
-	s.RegisterService(&AccountService_ServiceDesc, srv)
+func RegisterBudgetServiceServer(s grpc.ServiceRegistrar, srv BudgetServiceServer) {
+	s.RegisterService(&BudgetService_ServiceDesc, srv)
 }
 
-func _AccountService_CreateStandardBudgets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _BudgetService_CreateStandardBudgets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateStandardBudgetsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(AccountServiceServer).CreateStandardBudgets(ctx, in)
+		return srv.(BudgetServiceServer).CreateStandardBudgets(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/account.AccountService/CreateStandardBudgets",
+		FullMethod: "/account.BudgetService/CreateStandardBudgets",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AccountServiceServer).CreateStandardBudgets(ctx, req.(*CreateStandardBudgetsRequest))
+		return srv.(BudgetServiceServer).CreateStandardBudgets(ctx, req.(*CreateStandardBudgetsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// AccountService_ServiceDesc is the grpc.ServiceDesc for AccountService service.
+// BudgetService_ServiceDesc is the grpc.ServiceDesc for BudgetService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var AccountService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "account.AccountService",
-	HandlerType: (*AccountServiceServer)(nil),
+var BudgetService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "account.BudgetService",
+	HandlerType: (*BudgetServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "CreateStandardBudgets",
-			Handler:    _AccountService_CreateStandardBudgets_Handler,
+			Handler:    _BudgetService_CreateStandardBudgets_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
