@@ -2,12 +2,22 @@ DROP DATABASE IF EXISTS test_db;
 CREATE DATABASE test_db;
 USE test_db;
 
+CREATE TABLE transaction_types
+(
+  id INT NOT NULL AUTO_INCREMENT,
+  transaction_type VARCHAR(10) NOT NULL,
+  PRIMARY KEY(id)
+);
+
 CREATE TABLE big_categories
 (
   id INT NOT NULL AUTO_INCREMENT,
   category_name VARCHAR(10) NOT NULL,
-  transaction_type ENUM('expense', 'income') NOT NULL,
-  PRIMARY KEY(id)
+  transaction_type_id INT NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY fk_transaction_type_id(transaction_type_id)
+    REFERENCES transaction_types(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE medium_categories
@@ -39,7 +49,7 @@ CREATE TABLE custom_categories
 CREATE TABLE transactions
 (
   id INT NOT NULL AUTO_INCREMENT,
-  transaction_type ENUM('expense', 'income') NOT NULL,
+  transaction_type_id INT NOT NULL,
   posted_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   transaction_date DATE NOT NULL,
@@ -51,6 +61,9 @@ CREATE TABLE transactions
   medium_category_id INT DEFAULT NULL,
   custom_category_id INT DEFAULT NULL,
   PRIMARY KEY(id),
+  FOREIGN KEY fk_transaction_type_id(transaction_type_id)
+    REFERENCES transaction_types(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY fk_big_category_id(big_category_id)
     REFERENCES big_categories(id)
     ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -103,7 +116,7 @@ CREATE TABLE group_custom_categories
 CREATE TABLE group_transactions
 (
   id INT NOT NULL AUTO_INCREMENT,
-  transaction_type ENUM('expense', 'income') NOT NULL,
+  transaction_type_id INT NOT NULL,
   posted_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   transaction_date DATE NOT NULL,
@@ -118,6 +131,9 @@ CREATE TABLE group_transactions
   medium_category_id INT DEFAULT NULL,
   custom_category_id INT DEFAULT NULL,
   PRIMARY KEY(id),
+  FOREIGN KEY fk_transaction_type_id(transaction_type_id)
+    REFERENCES transaction_types(id)
+    ON DELETE RESTRICT ON UPDATE CASCADE,
   FOREIGN KEY fk_big_category_id(big_category_id)
     REFERENCES big_categories(id)
     ON DELETE RESTRICT ON UPDATE CASCADE,

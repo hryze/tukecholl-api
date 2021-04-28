@@ -1,24 +1,31 @@
+-- transaction_types table default data
+INSERT INTO transaction_types
+  (id, transaction_type)
+VALUES
+  (1, "income"),
+  (2, "expense");
+
 -- big_categories table default data
 INSERT INTO big_categories
-  (id, category_name, transaction_type)
+  (id, category_name, transaction_type_id)
 VALUES
-  (1,  "収入", "income"),
-  (2, "食費", "expense"),
-  (3, "日用品", "expense"),
-  (4, "趣味・娯楽", "expense"),
-  (5, "交際費", "expense"),
-  (6, "交通費", "expense"),
-  (7, "衣服・美容", "expense"),
-  (8, "健康・医療", "expense"),
-  (9, "通信費", "expense"),
-  (10, "教養・教育", "expense"),
-  (11, "住宅", "expense"),
-  (12, "水道・光熱費", "expense"),
-  (13, "自動車", "expense"),
-  (14, "保険", "expense"),
-  (15, "税金・社会保険", "expense"),
-  (16, "現金・カード", "expense"),
-  (17, "その他", "expense");
+  (1,  "収入", 1),
+  (2, "食費", 2),
+  (3, "日用品", 2),
+  (4, "趣味・娯楽", 2),
+  (5, "交際費", 2),
+  (6, "交通費", 2),
+  (7, "衣服・美容", 2),
+  (8, "健康・医療", 2),
+  (9, "通信費", 2),
+  (10, "教養・教育", 2),
+  (11, "住宅", 2),
+  (12, "水道・光熱費", 2),
+  (13, "自動車", 2),
+  (14, "保険", 2),
+  (15, "税金・社会保険", 2),
+  (16, "現金・カード", 2),
+  (17, "その他", 2);
 
 -- medium_categories table default data
 INSERT INTO medium_categories

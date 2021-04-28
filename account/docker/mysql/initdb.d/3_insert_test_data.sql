@@ -20,33 +20,33 @@ VALUES
 
 -- transactions table test data
 INSERT INTO transactions
-  (transaction_type, transaction_date, shop, memo, amount, user_id, big_category_id, medium_category_id, custom_category_id)
+  (transaction_type_id, transaction_date, shop, memo, amount, user_id, big_category_id, medium_category_id, custom_category_id)
 VALUES
-  ("expense", "2020-07-01", "コストコ", "セールで牛肉購入", 4500, "taira", 2, 6, NULL),
-  ("expense", "2020-07-02", "ニトリ", "ベッド購入", 15000, "taira", 3, 16, NULL),
-  ("expense", "2020-07-02", NULL, NULL, 1300, "taira", 2, NULL, 3),
-  ("expense", "2020-07-01", NULL, "電車定期代", 12000, "taira", 6, 33, NULL),
-  ("expense", "2020-07-03", NULL, NULL, 65000, "taira", 11, 66, NULL),
-  ("expense", "2020-07-04", NULL, NULL, 500, "taira", 2, 11, NULL),
-  ("expense", "2020-07-05", NULL, NULL, 4800, "taira", 8, 49, NULL),
-  ("expense", "2020-07-05", NULL, "みんなのGo言語", 2500, "taira", 10, 60, NULL),
-  ("expense", "2020-07-06", "コンビニ", NULL, 120, "taira", 2, NULL, 2),
-  ("expense", "2020-07-07", NULL, "歯磨き粉3つ購入", 300, "taira", 3, NULL, 6),
-  ("income", "2020-07-10", NULL, "給料日", 450000, "taira", 1, 1, NULL),
-  ("income", "2020-07-20", NULL, "賞与", 1000000, "taira", 1, 2, NULL),
-  ("income", "2020-07-20", NULL, "株配当金", 200000, "taira", 1, NULL, 14),
-  ("expense", "2020-07-01", "コストコ", "セールで牛肉購入", 4500, "anraku", 2, 6, NULL),
-  ("expense", "2020-07-02", "ニトリ", "ベッド購入", 15000, "anraku", 3, 16, NULL),
-  ("expense", "2020-07-02", NULL, "醤油", 1300, "anraku", 2, NULL, 7),
-  ("expense", "2020-07-01", NULL, "電車定期代", 12000, "anraku", 6, 33, NULL),
-  ("expense", "2020-07-03", NULL, NULL, 65000, "anraku", 11, 66, NULL),
-  ("expense", "2020-07-04", NULL, NULL, 500, "anraku", 2, 11, NULL),
-  ("expense", "2020-07-05", NULL, "携帯", 4800, "anraku", 9, 51, NULL),
-  ("expense", "2020-07-05", NULL, "React参考書", 2500, "anraku", 10, 60, NULL),
-  ("expense", "2020-07-06", "クリエイト" , NULL, 340, "anraku", 3, NULL, 11),
-  ("expense", "2020-07-07", NULL, "自分用におむつ3つ購入", 1200, "anraku", 3, NULL, 13),
-  ("income", "2020-07-10", NULL, "給料日", 140000, "anraku", 1, 1, NULL),
-  ("income", "2020-07-20", NULL, "賞与", 30000, "anraku", 1, 2, NULL);
+  (2, "2020-07-01", "コストコ", "セールで牛肉購入", 4500, "taira", 2, 6, NULL),
+  (2, "2020-07-02", "ニトリ", "ベッド購入", 15000, "taira", 3, 16, NULL),
+  (2, "2020-07-02", NULL, NULL, 1300, "taira", 2, NULL, 3),
+  (2, "2020-07-01", NULL, "電車定期代", 12000, "taira", 6, 33, NULL),
+  (2, "2020-07-03", NULL, NULL, 65000, "taira", 11, 66, NULL),
+  (2, "2020-07-04", NULL, NULL, 500, "taira", 2, 11, NULL),
+  (2, "2020-07-05", NULL, NULL, 4800, "taira", 8, 49, NULL),
+  (2, "2020-07-05", NULL, "みんなのGo言語", 2500, "taira", 10, 60, NULL),
+  (2, "2020-07-06", "コンビニ", NULL, 120, "taira", 2, NULL, 2),
+  (2, "2020-07-07", NULL, "歯磨き粉3つ購入", 300, "taira", 3, NULL, 6),
+  (1, "2020-07-10", NULL, "給料日", 450000, "taira", 1, 1, NULL),
+  (1, "2020-07-20", NULL, "賞与", 1000000, "taira", 1, 2, NULL),
+  (1, "2020-07-20", NULL, "株配当金", 200000, "taira", 1, NULL, 14),
+  (2, "2020-07-01", "コストコ", "セールで牛肉購入", 4500, "anraku", 2, 6, NULL),
+  (2, "2020-07-02", "ニトリ", "ベッド購入", 15000, "anraku", 3, 16, NULL),
+  (2, "2020-07-02", NULL, "醤油", 1300, "anraku", 2, NULL, 7),
+  (2, "2020-07-01", NULL, "電車定期代", 12000, "anraku", 6, 33, NULL),
+  (2, "2020-07-03", NULL, NULL, 65000, "anraku", 11, 66, NULL),
+  (2, "2020-07-04", NULL, NULL, 500, "anraku", 2, 11, NULL),
+  (2, "2020-07-05", NULL, "携帯", 4800, "anraku", 9, 51, NULL),
+  (2, "2020-07-05", NULL, "React参考書", 2500, "anraku", 10, 60, NULL),
+  (2, "2020-07-06", "クリエイト" , NULL, 340, "anraku", 3, NULL, 11),
+  (2, "2020-07-07", NULL, "自分用におむつ3つ購入", 1200, "anraku", 3, NULL, 13),
+  (1, "2020-07-10", NULL, "給料日", 140000, "anraku", 1, 1, NULL),
+  (1, "2020-07-20", NULL, "賞与", 30000, "anraku", 1, 2, NULL);
 
 -- standard_budgets table test data
 INSERT INTO standard_budgets
@@ -225,25 +225,25 @@ VALUES
 
 -- group_transactions table test data
 INSERT INTO group_transactions
-  (transaction_type, transaction_date, shop, memo, amount, group_id, posted_user_id, updated_user_id, payment_user_id, big_category_id, medium_category_id, custom_category_id)
+  (transaction_type_id, transaction_date, shop, memo, amount, group_id, posted_user_id, updated_user_id, payment_user_id, big_category_id, medium_category_id, custom_category_id)
 VALUES
-  ("expense", "2020-07-01", "コストコ", "セールで牛肉購入", 4500, 4, "taira", NULL, "taira", 2, 6, NULL),
-  ("expense", "2020-07-02", NULL, "電気料金", 9500, 4, "taira", NULL, "taira", 12, 71, NULL),
-  ("expense", "2020-07-02", "コストコ", "大容量ケチャップ", 1100, 4, "taira", NULL, "taira", 2, NULL, 1),
-  ("expense", "2020-07-01", NULL, "WiFi代", 4900, 4, "taira", NULL, "taira", 9, 53, NULL),
-  ("expense", "2020-07-03", "クリエイト", "トイレットペーパー", 3000, 4, "anraku", NULL, "anraku", 3, NULL, 5),
-  ("expense", "2020-07-04", "クリエイト", "洗剤", 9000, 4, "anraku", NULL, "anraku", 3, NULL, 4),
-  ("expense", "2020-07-04", "コストコ", "牛肉購入", 7000, 4, "ito", NULL, "ito", 2, 6, NULL),
-  ("expense", "2020-07-07", "コストコ", "牛肉購入", 5000, 4, "furusawa", NULL, "furusawa", 2, 6, NULL),
-  ("expense", "2020-07-11", "コストコ", "牛肉購入", 60000, 5, "taira", NULL, "taira", 2, 6, NULL),
-  ("expense", "2020-07-15", "コストコ", "牛肉購入", 45000, 5, "anraku", NULL, "anraku", 2, 6, NULL),
-  ("expense", "2020-07-17", "コストコ", "牛肉購入", 30000, 5, "ito", NULL, "ito", 2, 6, NULL),
-  ("expense", "2020-07-25", "コストコ", "牛肉購入", 8000, 5, "furusawa", NULL, "furusawa", 2, 6, NULL),
-  ("expense", "2020-07-29", "コストコ", "牛肉購入", 7000, 5, "test4", NULL, "test4", 2, 6, NULL),
-  ("expense", "2020-07-30", "コストコ", "牛肉購入", 6000, 5, "test5", NULL, "test5", 2, 6, NULL),
-  ("expense", "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "taira", NULL, "taira", 2, 6, NULL),
-  ("expense", "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "tati1", NULL, "tati1", 2, 6, NULL),
-  ("expense", "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "test4", NULL, "test4", 2, 6, NULL);
+  (2, "2020-07-01", "コストコ", "セールで牛肉購入", 4500, 4, "taira", NULL, "taira", 2, 6, NULL),
+  (2, "2020-07-02", NULL, "電気料金", 9500, 4, "taira", NULL, "taira", 12, 71, NULL),
+  (2, "2020-07-02", "コストコ", "大容量ケチャップ", 1100, 4, "taira", NULL, "taira", 2, NULL, 1),
+  (2, "2020-07-01", NULL, "WiFi代", 4900, 4, "taira", NULL, "taira", 9, 53, NULL),
+  (2, "2020-07-03", "クリエイト", "トイレットペーパー", 3000, 4, "anraku", NULL, "anraku", 3, NULL, 5),
+  (2, "2020-07-04", "クリエイト", "洗剤", 9000, 4, "anraku", NULL, "anraku", 3, NULL, 4),
+  (2, "2020-07-04", "コストコ", "牛肉購入", 7000, 4, "ito", NULL, "ito", 2, 6, NULL),
+  (2, "2020-07-07", "コストコ", "牛肉購入", 5000, 4, "furusawa", NULL, "furusawa", 2, 6, NULL),
+  (2, "2020-07-11", "コストコ", "牛肉購入", 60000, 5, "taira", NULL, "taira", 2, 6, NULL),
+  (2, "2020-07-15", "コストコ", "牛肉購入", 45000, 5, "anraku", NULL, "anraku", 2, 6, NULL),
+  (2, "2020-07-17", "コストコ", "牛肉購入", 30000, 5, "ito", NULL, "ito", 2, 6, NULL),
+  (2, "2020-07-25", "コストコ", "牛肉購入", 8000, 5, "furusawa", NULL, "furusawa", 2, 6, NULL),
+  (2, "2020-07-29", "コストコ", "牛肉購入", 7000, 5, "test4", NULL, "test4", 2, 6, NULL),
+  (2, "2020-07-30", "コストコ", "牛肉購入", 6000, 5, "test5", NULL, "test5", 2, 6, NULL),
+  (2, "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "taira", NULL, "taira", 2, 6, NULL),
+  (2, "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "tati1", NULL, "tati1", 2, 6, NULL),
+  (2, "2020-08-01", "コストコ", "牛肉購入", 1000, 1, "test4", NULL, "test4", 2, 6, NULL);
 
 -- group_standard_budgets table test data
 INSERT INTO group_standard_budgets
