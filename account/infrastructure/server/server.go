@@ -12,11 +12,7 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/paypay3/tukecholl-api/account/config"
-	"github.com/paypay3/tukecholl-api/account/infrastructure/persistence"
 	"github.com/paypay3/tukecholl-api/account/infrastructure/persistence/rdb"
-	"github.com/paypay3/tukecholl-api/account/interfaces/handler"
-	"github.com/paypay3/tukecholl-api/account/usecase"
-	"github.com/paypay3/tukecholl-api/proto/accountproto"
 )
 
 func Run() error {
@@ -26,13 +22,11 @@ func Run() error {
 	}
 	defer rdbDriver.Conn.Close()
 
-	budgetRepository := persistence.NewBudgetRepository(rdbDriver)
-	budgetUsecase := usecase.NewBudgetUsecase(budgetRepository)
-	budgetHandler := handler.NewBudgetHandler(budgetUsecase)
-
 	srv := grpc.NewServer()
+
+	// register services to the server.
 	reflection.Register(srv)
-	accountproto.RegisterBudgetServiceServer(srv, budgetHandler)
+	registerBudgetServiceServer(srv, rdbDriver)
 
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", config.Env.Server.Port))
 	if err != nil {
