@@ -39,11 +39,10 @@ CREATE TABLE custom_categories
   big_category_id INT NOT NULL,
   user_id VARCHAR(10) NOT NULL,
   PRIMARY KEY(id),
-  UNIQUE uq_custom_category(category_name, big_category_id, user_id),
+  UNIQUE uq_custom_category(user_id, big_category_id, category_name),
   FOREIGN KEY fk_big_category_id(big_category_id)
     REFERENCES big_categories(id)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
-  INDEX idx_user_id(user_id, id DESC)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE transactions
@@ -106,11 +105,10 @@ CREATE TABLE group_custom_categories
   big_category_id INT NOT NULL,
   group_id INT NOT NULL,
   PRIMARY KEY(id),
-  UNIQUE uq_group_custom_category(category_name, big_category_id, group_id),
+  UNIQUE uq_group_custom_category(user_id, big_category_id, category_name),
   FOREIGN KEY fk_big_category_id(big_category_id)
     REFERENCES big_categories(id)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
-  INDEX idx_group_id(group_id, id)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 CREATE TABLE group_transactions
