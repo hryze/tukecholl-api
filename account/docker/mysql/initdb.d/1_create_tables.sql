@@ -178,6 +178,5 @@ CREATE TABLE group_accounts
   receipt_confirmation bit(1) NOT NULL DEFAULT b'0',
   group_id INT NOT NULL,
   PRIMARY KEY(id),
-  UNIQUE uq_group_accounts(years_months, payer_user_id, recipient_user_id, group_id),
-  INDEX idx_group_id(group_id)
+  UNIQUE uq_group_accounts(group_id, years_months, payer_user_id, recipient_user_id)
 );
