@@ -38,9 +38,14 @@ func (e *appError) Error() string {
 }
 
 func (e *appError) Is(err error) bool {
-	if next := AsAppError(err); next != nil {
-		if e.code == next.code {
+	if target := AsAppError(err); target != nil {
+		if e.code == target.code {
 			return true
+		}
+
+		next := AsAppError(e.next)
+		if next == nil {
+			return false
 		}
 
 		return next.Is(err)
