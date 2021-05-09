@@ -1,11 +1,9 @@
 package persistence
 
 import (
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-
 	"github.com/paypay3/tukecholl-api/account/domain/vo"
 	"github.com/paypay3/tukecholl-api/account/infrastructure/persistence/rdb"
+	"github.com/paypay3/tukecholl-api/pkg/apperrors"
 )
 
 type budgetRepository struct {
@@ -39,7 +37,7 @@ func (r *budgetRepository) CreateStandardBudgets(userID vo.UserID) error {
             (?,17)`
 
 	if _, err := r.Driver.Conn.Exec(query, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID, userID); err != nil {
-		return status.Errorf(codes.Internal, "rdb unexpected error: %v", err)
+		return apperrors.InternalServerError.SetMessage("標準予算の初期値追加に失敗しました").Wrap(err, "rdb unexpected error")
 	}
 
 	return nil

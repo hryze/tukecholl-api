@@ -21,6 +21,7 @@ func init() {
 type ENV struct {
 	Server
 	RDB
+	Log
 }
 
 type Server struct {
@@ -32,4 +33,8 @@ type RDB struct {
 	MaxConn         int           `envconfig:"MYSQL_MAX_CONN"          default:"25"`
 	MaxIdleConn     int           `envconfig:"MYSQL_MAX_IDLE"          default:"25"`
 	MaxConnLifetime time.Duration `envconfig:"MYSQL_MAX_CONN_LIFETIME" default:"300s"`
+}
+
+type Log struct {
+	Debug bool `envconfig:"LOG_DEBUG" default:"false"`
 }

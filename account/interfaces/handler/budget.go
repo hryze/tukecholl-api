@@ -5,6 +5,7 @@ import (
 
 	"github.com/paypay3/tukecholl-api/account/usecase"
 	"github.com/paypay3/tukecholl-api/account/usecase/input"
+	"github.com/paypay3/tukecholl-api/pkg/apperrors"
 	"github.com/paypay3/tukecholl-api/proto/accountproto"
 )
 
@@ -23,7 +24,7 @@ func (h *budgetHandler) CreateStandardBudgets(ctx context.Context, r *accountpro
 	user := &input.User{ID: r.GetUserId()}
 
 	if err := h.budgetUsecase.CreateStandardBudgets(user); err != nil {
-		return nil, err
+		return nil, apperrors.Wrap(err, "failed to create standard budget initial value")
 	}
 
 	return &accountproto.CreateStandardBudgetsResponse{}, nil
