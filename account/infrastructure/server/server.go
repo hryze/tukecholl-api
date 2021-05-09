@@ -27,6 +27,7 @@ func Run() error {
 	srv := grpc.NewServer(
 		grpc.UnaryInterceptor(grpcMiddleware.ChainUnaryServer(
 			Interceptor.TransmitErrorWithStatus(),
+			Interceptor.Logging(),
 		)),
 	)
 
