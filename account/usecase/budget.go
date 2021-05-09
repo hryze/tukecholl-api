@@ -1,12 +1,10 @@
 package usecase
 
 import (
-	"google.golang.org/grpc/codes"
-	"google.golang.org/grpc/status"
-
 	"github.com/paypay3/tukecholl-api/account/domain/budgetdomain"
 	"github.com/paypay3/tukecholl-api/account/domain/vo"
 	"github.com/paypay3/tukecholl-api/account/usecase/input"
+	"github.com/paypay3/tukecholl-api/pkg/apperrors"
 )
 
 type BudgetUsecase interface {
@@ -26,11 +24,11 @@ func NewBudgetUsecase(budgetRepository budgetdomain.Repository) *budgetUsecase {
 func (u *budgetUsecase) CreateStandardBudgets(user *input.User) error {
 	userID, err := vo.NewUserID(user.ID)
 	if err != nil {
-		return status.Errorf(codes.InvalidArgument, "invalid user id: %v", err)
+		return apperrors.InvalidParameter.AddBadRequestFieldViolation("user id", "ユーザーIDを正しく指定してください").Wrap(err, "invalid user id")
 	}
 
 	if err := u.budgetRepository.CreateStandardBudgets(userID); err != nil {
-		return err
+		return apperrors.Wrap(err, "failed to create standard budget initial value")
 	}
 
 	return nil

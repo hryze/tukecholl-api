@@ -8,11 +8,13 @@ import (
 	"os/signal"
 	"syscall"
 
+	grpcMiddleware "github.com/grpc-ecosystem/go-grpc-middleware"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
 	"github.com/paypay3/tukecholl-api/account/config"
 	"github.com/paypay3/tukecholl-api/account/infrastructure/persistence/rdb"
+	"github.com/paypay3/tukecholl-api/pkg/Interceptor"
 )
 
 func Run() error {
@@ -22,7 +24,11 @@ func Run() error {
 	}
 	defer rdbDriver.Conn.Close()
 
-	srv := grpc.NewServer()
+	srv := grpc.NewServer(
+		grpc.UnaryInterceptor(grpcMiddleware.ChainUnaryServer(
+			Interceptor.TransmitErrorWithStatus(),
+		)),
+	)
 
 	// register services to the server.
 	reflection.Register(srv)
